@@ -35,9 +35,14 @@ const login = (req, res, next) => {
       const token = jwt.sign(
         { email: loadedUser.email, userId: loadedUser.id },
         'someSuperSecretkey',
-        { expiresIn: '1d' }
+        { expiresIn: '1d' },
+        (err, token) => {
+          if (err) {
+            next(err);
+          }
+          res.status(200).json({ token: token, data: loadedUser });
+        }
       );
-      res.status(200).json({ token: token, data: loadedUser });
     })
     .catch(err => {
       console.log('err', err);
