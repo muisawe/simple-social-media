@@ -1,1 +1,6 @@
-# simple-social-media
+# simple social media
+
+
+
+
+# database diagram  
