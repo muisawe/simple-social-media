@@ -125,7 +125,7 @@ const setCommentLike = (req, res, next) => {
       if (result.rows.count > 0) {
         res.status(403).json({ message: 'forbidden' });
       } else {
-        commentDb.addNewCommentLike(userId, commentId).then(result => {
+        commentDb.addNewCommentLike(userId, commentId).then(function () {
           res.status(201).json({ message: 'like added' });
         });
       }
