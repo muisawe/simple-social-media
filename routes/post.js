@@ -1,9 +1,14 @@
+// library modules
 const express = require('express');
 const { body } = require('express-validator');
+
+// local modules
 const isAuth = require('../middlewares/is-auth');
 const validator = require('../middlewares/post.validator');
 const postController = require('../controllers/post');
 const commentController = require('../controllers/comment');
+
+// conestant
 const router = express.Router();
 
 //get All posts

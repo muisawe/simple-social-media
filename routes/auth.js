@@ -1,7 +1,9 @@
 const express = require('express');
+
+// local modules
 const authController = require('../controllers/user');
 const userDb = require('../db/queries/user');
-// const { body } = require('express-validator');
+
 const router = express.Router();
 const isAuth = require('../middlewares/is-auth');
 const validator = require('../middlewares/user.validator');

@@ -1,4 +1,5 @@
 const { body } = require('express-validator');
+
 const userDb = require('../db/queries/user');
 
 const registerValidator = [

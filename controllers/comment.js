@@ -1,7 +1,16 @@
-const commentDb = require('../db/queries/comment');
+//  nede modules
+// **********
+//  library modules
+
 const { validationResult } = require('express-validator');
 
+//  local modules
+const commentDb = require('../db/queries/comment');
+
+// conestant
 const validatorError = 'validation error';
+
+//functions
 const createComment = (req, res, next) => {
   const errors = validationResult(req);
 

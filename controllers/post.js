@@ -1,9 +1,15 @@
+//  nede modules
+//  library modules
+const { validationResult } = require('express-validator');
+
+//  local modules
 const postDb = require('../db/queries/post');
 const commentDb = require('../db/queries/comment');
 
+// contestant
 const validatorError = 'validation error';
-const { validationResult } = require('express-validator');
 
+// functions
 const createPost = (req, res, next) => {
   const errors = validationResult(req);
 

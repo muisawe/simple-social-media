@@ -1,4 +1,7 @@
+// library modules
 const multer = require('multer');
+
+//functions
 const fileStorage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, 'images');

@@ -31,7 +31,7 @@ const login = (req, res, next) => {
         error.statusCode = 401; // not authenticated
         throw error;
       }
-      loadedUser.password = undefined;
+      delete loadedUser.password;
       const token = jwt.sign(
         { email: loadedUser.email, userId: loadedUser.id },
         'someSuperSecretkey',
