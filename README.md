@@ -1,5 +1,5 @@
 # simple social media
-
+Practical application of the concepts I have learned during the past week.
 
 
 
