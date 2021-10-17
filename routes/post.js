@@ -1,6 +1,7 @@
 const express = require('express');
-const { body } = require('express-validator/check');
-const isAuth = require('../middleware/is-auth');
+const { body } = require('express-validator');
+const isAuth = require('../middlewares/is-auth');
+const validator = require('../middlewares/post.validator');
 const postController = require('../controllers/post');
 const commentController = require('../controllers/comment');
 const router = express.Router();
@@ -12,7 +13,7 @@ router.get('/', isAuth, postController.getAllPosts);
 router.post(
   '/post',
   isAuth,
-  [body('content').trim().isLength({ min: 5 })],
+  validator.postContentValidator,
   postController.createPost
 );
 
@@ -37,7 +38,7 @@ router.delete('/post/:postId/like', isAuth, postController.removePostLike);
 router.post(
   '/post/:postId/comment',
   isAuth,
-  [body('content').trim().isLength({ min: 5 })],
+  validator.postContentValidator,
   commentController.createComment
 );
 
@@ -59,7 +60,7 @@ router.delete(
 router.put(
   '/post/:postId/comment/:commentId',
   isAuth,
-  [[body('content').trim().isLength({ min: 5 })]],
+  validator.postContentValidator,
   commentController.updateComment
 );
 

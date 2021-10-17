@@ -1,34 +1,14 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const multer = require('multer');
+
 const authRoutes = require('./routes/auth');
 const postRoutes = require('./routes/post');
+const multParse = require('./middlewares/multer');
 
-const fileStorage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, 'images');
-  },
-  filename: (req, file, cb) => {
-    cb(null, new Date().toISOString() + '-' + file.originalname);
-  },
-});
-const fileFiltter = (req, file, cb) => {
-  if (
-    file.mimetype === 'image/png' ||
-    file.mimetype === 'image/jpg' ||
-    file.mimetype === 'image/jpeg'
-  ) {
-    cb(null, true);
-  } else {
-    cb(null, false);
-  }
-};
-const multParse = multer({
-  storage: fileStorage,
-  fileFilter: fileFiltter,
-}).single('image');
+const app = express();
+
 app.use(bodyParser.json()); // application/json
-app.use(bodyParser.urlencoded()); // x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true })); // x-www-form-urlencoded
 
 app.use('/api', multParse); // use with form data
 
@@ -51,7 +31,5 @@ app.use((error, req, res, next) => {
     data: error.data,
   });
 });
-
-const app = express();
 
 app.listen(8080);

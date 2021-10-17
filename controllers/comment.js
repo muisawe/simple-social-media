@@ -1,5 +1,5 @@
 const commentDb = require('../db/queries/comment');
-const { validationResult } = require('express-validator/check');
+const { validationResult } = require('express-validator');
 
 const createComment = (req, res, next) => {
   const errors = validationResult(req);
