@@ -40,7 +40,7 @@ const login = (req, res, next) => {
       res.status(200).json({ token: token, data: loadedUser });
     })
     .catch(err => {
-      console.log('err' + err);
+      console.log('err', err);
       if (!err.statusCode) {
         err.statusCode = 500;
       }
@@ -71,7 +71,7 @@ const register = (req, res, next) => {
       });
     })
     .catch(err => {
-      console.log('err' + err);
+      console.log('err', err);
       if (!err.statusCode) {
         err.statusCode = 500;
       }
@@ -101,7 +101,7 @@ const deleteUser = (req, res, next) => {
       res.status(201).json({ message: 'user deleted' });
     })
     .catch(err => {
-      console.log('err' + err);
+      console.log('err', err);
       if (!err.statusCode) {
         err.statusCode = 500;
       }

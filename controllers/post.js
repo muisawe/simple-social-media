@@ -1,13 +1,14 @@
 const postDb = require('../db/queries/post');
 const commentDb = require('../db/queries/comment');
 
+const validatorError = 'validation error';
 const { validationResult } = require('express-validator');
 
 const createPost = (req, res, next) => {
   const errors = validationResult(req);
 
   if (!errors.isEmpty()) {
-    const error = new Error('validation error');
+    const error = new Error(validatorError);
     error.statusCode = 422;
     throw error;
   }
@@ -34,7 +35,7 @@ const getAllPosts = (req, res, next) => {
   const errors = validationResult(req);
 
   if (!errors.isEmpty()) {
-    const error = new Error('validation error');
+    const error = new Error(validatorError);
     error.statusCode = 422;
     throw error;
   }
@@ -59,7 +60,7 @@ const getPost = (req, res, next) => {
   const errors = validationResult(req);
 
   if (!errors.isEmpty()) {
-    const error = new Error('validation error');
+    const error = new Error(validatorError);
     error.statusCode = 422;
     throw error;
   }
@@ -83,7 +84,7 @@ const deletePost = (req, res, next) => {
   const errors = validationResult(req);
 
   if (!errors.isEmpty()) {
-    const error = new Error('validation error');
+    const error = new Error(validatorError);
     error.statusCode = 422;
     throw error;
   }
@@ -112,7 +113,7 @@ const updatePost = (req, res, next) => {
   const errors = validationResult(req);
 
   if (!errors.isEmpty()) {
-    const error = new Error('validation error');
+    const error = new Error(validatorError);
     error.statusCode = 422;
     throw error;
   }
@@ -136,7 +137,7 @@ const updatePost = (req, res, next) => {
 
 const setPostLike = (req, res, next) => {
   if (!errors.isEmpty()) {
-    const error = new Error('validation error');
+    const error = new Error(validatorError);
     error.statusCode = 422;
     throw error;
   }
@@ -163,7 +164,7 @@ const setPostLike = (req, res, next) => {
 
 const removePostLike = (req, res, next) => {
   if (!errors.isEmpty()) {
-    const error = new Error('validation error');
+    const error = new Error(validatorError);
     error.statusCode = 422;
     throw error;
   }

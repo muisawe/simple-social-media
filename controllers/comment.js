@@ -1,11 +1,12 @@
 const commentDb = require('../db/queries/comment');
 const { validationResult } = require('express-validator');
 
+const validatorError = 'validation error';
 const createComment = (req, res, next) => {
   const errors = validationResult(req);
 
   if (!errors.isEmpty()) {
-    const error = new Error('validation error');
+    const error = new Error(validatorError);
     error.statusCode = 422;
     throw error;
   }
@@ -34,7 +35,7 @@ const getAllCommentsForPost = (req, res, next) => {
   const errors = validationResult(req);
 
   if (!errors.isEmpty()) {
-    const error = new Error('validation error');
+    const error = new Error(validatorError);
     error.statusCode = 422;
     throw error;
   }
@@ -60,7 +61,7 @@ const deleteComment = (req, res, next) => {
   const errors = validationResult(req);
 
   if (!errors.isEmpty()) {
-    const error = new Error('validation error');
+    const error = new Error(validatorError);
     error.statusCode = 422;
     throw error;
   }
@@ -85,7 +86,7 @@ const updateComment = (req, res, next) => {
   const errors = validationResult(req);
 
   if (!errors.isEmpty()) {
-    const error = new Error('validation error');
+    const error = new Error(validatorError);
     error.statusCode = 422;
     error.data = errors.array();
     throw error;
@@ -112,7 +113,7 @@ const updateComment = (req, res, next) => {
 
 const setCommentLike = (req, res, next) => {
   if (!errors.isEmpty()) {
-    const error = new Error('validation error');
+    const error = new Error(validatorError);
     error.statusCode = 422;
     throw error;
   }
@@ -141,7 +142,7 @@ const setCommentLike = (req, res, next) => {
 
 const deleteCommentLike = (req, res, next) => {
   if (!errors.isEmpty()) {
-    const error = new Error('validation error');
+    const error = new Error(validatorError);
     error.statusCode = 422;
     throw error;
   }
